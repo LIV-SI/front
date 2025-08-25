@@ -11,14 +11,13 @@ function Signup() {
 
   const handleSignup = () => {
     // const users = 
-    const newUser = {
-      id: Date.now(),
-      username,
-      password,
-    };
+    // const newUser = {
+    //   username,
+    //   password,
+    // };
 
-    alert("회원가입 성공!");
-    navigate(`/mypage/${newUser.id}`);
+    // alert("회원가입 성공!");
+    // navigate(`/mypage/${newUser.id}`);
   };
 
   return (
