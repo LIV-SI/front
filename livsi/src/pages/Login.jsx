@@ -10,14 +10,12 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const id = useParams()
-
   const onLogin = async () => {
-    const user = await handleLogin(username, password, id);
+    const user = await handleLogin(username, password);
     console.log(id)
     if (user) {
       alert("로그인 성공!");
-      navigate(`/mypage/${id}`);
+      navigate(`/mypage/${user.memverId}`);
     } else {
       alert("아이디 또는 비밀번호가 올바르지 않습니다.");
     }
