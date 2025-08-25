@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./Login.css";
 import { livsiFunctionContext } from "../App";
-import Header from "../components/Header.jsx";
+import Header from "../components/Header";
 
 function Login() {
   const { handleLogin } = useContext(livsiFunctionContext);
@@ -10,11 +10,14 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const onLogin = () => {
-    const user = handleLogin(username, password);
+  const id = useParams()
+
+  const onLogin = async () => {
+    const user = await handleLogin(username, password, id);
+    console.log(id)
     if (user) {
       alert("로그인 성공!");
-      navigate(`/mypage/${user.id}`);
+      navigate(`/mypage/${id}`);
     } else {
       alert("아이디 또는 비밀번호가 올바르지 않습니다.");
     }
