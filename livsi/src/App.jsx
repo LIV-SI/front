@@ -12,6 +12,18 @@ import Main from "./pages/Main";
 import Onboard from "./components/Onboard";
 import axios from "./axios/axios";
 
+const getUserData = async () => {
+  const res = await axios.get('/members')
+  const UserData = res.data
+  
+  if (UserData) {
+    console.log(UserData, "wefwefwefe")
+    return UserData
+  } else {
+    console.log("망했다")
+  }
+}
+
 export const livsiFunctionContext = createContext();
 export const livsistateContext = createContext();
 
@@ -38,27 +50,21 @@ function App() {
 
   useEffect(() => {
     onLoad();
-    const savedLogin = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (savedLogin) {
-      setIsLogin(true);
-      setLoginInfo(savedLogin);
-    }
   }, []);
 
   const setSkip = () => {
     setIson(false);
   };
 
-  const handleLogin = (username, password) => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const foundUser = users.find(
-      (u) => u.username === username && u.password === password
-    );
+  const handleLogin = async (username, password, id) => {
+    let users = await getUserData()
+    console.log(username, users, password)
+
+    const foundUser = users.find((u) => u.memberName === username && u.password === password);
     if (foundUser) {
-      const userData = { id: foundUser.id, username: foundUser.username };
+      const userData = { memberId: foundUser.memberId, memberName: foundUser.memberName };
       setIsLogin(true);
       setLoginInfo(userData);
-      localStorage.setItem("loggedInUser", JSON.stringify(userData));
       return userData;
     }
     return null;

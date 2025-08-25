@@ -31,33 +31,18 @@ function Signup() {
     <div>
       <Header />
     <div className="auth-container">
-      <h1 className="logo">LIV:SI</h1>
       <h2 className="title">회원가입</h2>
       <div className="form-box">
         <input
           type="text"
-          placeholder="👤 이름 입력"
-          className="input-field"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="📞 휴대전화번호"
-          className="input-field"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="🆔 아이디 입력"
+          placeholder="아이디 입력"
           className="input-field"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
-          placeholder="🔑비밀번호 입력"
+          placeholder="비밀번호 입력"
           className="input-field"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

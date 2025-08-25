@@ -11,7 +11,7 @@ function MyPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const allPosts = axios.get(`/members/6`)
+    const allPosts = axios.get(`/members/${id}`)
     console.log(allPosts)
     setPosts(allPosts);
   }, [id]);
