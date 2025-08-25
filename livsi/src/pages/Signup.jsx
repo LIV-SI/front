@@ -4,24 +4,18 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   const handleSignup = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    // const users = 
     const newUser = {
       id: Date.now(),
-      name,
-      phone,
       username,
       password,
     };
-
-    localStorage.setItem("users", JSON.stringify([...users, newUser]));
 
     alert("회원가입 성공!");
     navigate(`/mypage/${newUser.id}`);
