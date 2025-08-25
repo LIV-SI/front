@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   const goInfo = () => {
-    nav(isLogin ? `/mypage/${loginInfo.id}` : "/signin");
+    nav(isLogin ? `/mypage/${loginInfo.memberId}` : "/signin");
   }
 
   return (
